@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Registration = () => {
 
@@ -9,8 +10,6 @@ const Registration = () => {
         phone:"",
         password:""
     })
-    
-    
     const handleChange=(e)=>{
         const newUser={...user};
         newUser[e.target.name]= e.target.value
@@ -23,7 +22,7 @@ const Registration = () => {
         .then(resp=>{
             console.log(resp.data);
         }).catch(err=>{
-            console.log(err);
+          console.log(err);
         });
         e.preventDefault();
     }
@@ -60,7 +59,7 @@ const Registration = () => {
               <input type="submit" name="submit" value="REGISTER" className="btn btn-primary login_button"/>
               <div className="swap_between_login_register">
                 <p>Already have an account?</p>
-                <u><a href="{{route('login')}}">Sign in here</a></u>
+                <u> <Link to="/login"> Sign in here</Link></u>
             </div>
           </form>  
         </div>

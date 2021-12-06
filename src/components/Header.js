@@ -1,7 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useLocation } from "react-router-dom";
 
 const Header = () => {
+    const location = useLocation();
+
+    useEffect(() => {
+       console.log(location.pathname); // result: '?query=abc'
+       console.log(location.state); // result: 'some_value'
+    }, [location]);
+    
     return (
         <div>
             <section>
@@ -27,7 +35,10 @@ const Header = () => {
                     </ul>
                 </nav>
                 <ul class="nav navbar-nav">
-                    <li><Link to="/register" className="link"><span ></span>Sign in</Link></li>
+                    <li>
+                    <Link to="/login" className="btn"><span ></span>Sign in</Link>
+                    </li>
+                    
                 </ul>
                 
             </header>

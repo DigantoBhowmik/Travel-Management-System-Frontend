@@ -11,39 +11,45 @@ import Footer from './components/Footer';
 import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import Packagesdetails from './components/Package/Packagesdetails';
 import Registration from './components/User/Registration';
+import Login from './components/User/Login';
 
 ReactDOM.render(
   <React.StrictMode>
-    
-    
     <Router>
       <Header></Header>
-      <div className="container">
-        <Switch>
-          <Route exact path="/">
-            <Home></Home>
-            
-            <div className="title">
-              <h2>Packages</h2>
-            </div>
-            <Showpackages></Showpackages>
-            <div className="title">
-              <h2>Events</h2>
-            </div>
-            <Showevents></Showevents>
-            
-          </Route>
-          <Route exact path="/packages">
-            <Showpackages></Showpackages>
-          </Route>
-          <Route exact path="/packagedetails/:id">
-            <Packagesdetails></Packagesdetails>
-          </Route>
-          <Route exact path="/register">
-            <Registration></Registration>
-          </Route>
-        </Switch>
-        </div>
+        <div className="container">
+            <Switch>
+
+              <Route exact path="/">
+                <Home></Home>
+                <div className="title">
+                  <h2>Packages</h2>
+                </div>
+                <Showpackages></Showpackages>
+                <div className="title">
+                  <h2>Events</h2>
+                </div>
+                <Showevents></Showevents>
+              </Route>
+
+              <Route exact path="/packages">
+                <Showpackages></Showpackages>
+              </Route>
+
+              <Route exact path="/packagedetails/:id">
+                <Packagesdetails></Packagesdetails>
+              </Route>
+
+              <Route exact path="/register">
+                <Registration></Registration>
+              </Route>
+
+              <Route exact path="/login">
+                <Login></Login>
+              </Route>
+              
+            </Switch>
+          </div>
         <Footer></Footer>
       </Router>
     
