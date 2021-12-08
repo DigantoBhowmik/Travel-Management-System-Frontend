@@ -6,12 +6,14 @@ import Header from './components/Header';
 import Home from './components/Home/Home';
 import Showpackages from './components/Home/Showpackages';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap'
 import Showevents from './components/Home/Showevents';
 import Footer from './components/Footer';
 import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import Packagesdetails from './components/Package/Packagesdetails';
 import Registration from './components/User/Registration';
 import Login from './components/User/Login';
+import Profile from './components/User/Profile';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -48,6 +50,9 @@ ReactDOM.render(
                 <Login></Login>
               </Route>
               
+              <Route exact path="/profile">
+                <Profile></Profile>
+              </Route>
             </Switch>
           </div>
         <Footer></Footer>

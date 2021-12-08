@@ -1,14 +1,18 @@
-import React, { useEffect } from 'react';
+import axios from 'axios';
+import React, {useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
-import { useLocation } from "react-router-dom";
+import {DropdownButton,Dropdown} from 'react-bootstrap'
 
 const Header = () => {
-    const location = useLocation();
-
-    useEffect(() => {
-       console.log(location.pathname); // result: '?query=abc'
-       console.log(location.state); // result: 'some_value'
-    }, [location]);
+    const id=localStorage.getItem('userId');
+    console.log(id)
+    const [user,setUser]=useState([]);
+    useEffect(()=>{
+        axios.get(`http://127.0.0.1:8000/api/profile/${id}`)
+        .then(res=>{
+            setUser(res.data)    
+        })
+    },[]);
     
     return (
         <div>
@@ -34,12 +38,30 @@ const Header = () => {
                         <li><a href="">Contact Us</a></li>
                     </ul>
                 </nav>
-                <ul class="nav navbar-nav">
-                    <li>
-                    <Link to="/login" className="btn"><span ></span>Sign in</Link>
-                    </li>
+                {
+                    user && user.role==='agent'?
+                    <DropdownButton id="dropdown-basic-button" title={user.name}>
+                        <Dropdown.Item href="/profile">My Profile</Dropdown.Item>
+                        <Dropdown.Item href="#/action-2">My Packages</Dropdown.Item>
+                        <Dropdown.Item href="#/action-3">My Events</Dropdown.Item>
+                        <Dropdown.Item >Log out</Dropdown.Item>
+                    </DropdownButton>
+                    :
+                    user && user.role==='user'?
+                    <DropdownButton id="dropdown-basic-button" title={user.name}>
+                        <Dropdown.Item href="#/action-1">My Profile</Dropdown.Item>
+                        <Dropdown.Item href="#/action-2">My Booking</Dropdown.Item>
+                        <Dropdown.Item >Log out</Dropdown.Item>
+                    </DropdownButton>
+                    :<ul class="nav navbar-nav">
+                        <li>
+                            <Link to="/login" className="btn"><span ></span>Sign in</Link>
+                        </li>
                     
-                </ul>
+                     </ul>
+                    
+                }
+                
                 
             </header>
         </div>

@@ -9,28 +9,26 @@ const Login = () => {
         email:"",
         password:""
     })
-    const history = useHistory()
     const handleChange=(e)=>{
         const newUser={...event};
         newUser[e.target.name]= e.target.value
         setEvent(newUser);
     }
+    const history=useHistory()
+    
     console.log(event)
     const handleSubmit = (e) =>{
         axios.post('http://127.0.0.1:8000/api/login',event)
         .then(resp=>{
-            console.log(resp.data);
-            const data=resp.data
-            if(data){
-                history.push({
-                    pathname:'/',
-                    state: data
-                });
+            if (!resp.data) {
+                console.log('vil')
+            } else {
+                localStorage.setItem('userId',resp.data.id)
+                history.push('/');
             }
-            else{
-                history.push('/login')
-            }
+            
         }).catch(err=>{
+            
             console.log(err);
         });
         e.preventDefault();
