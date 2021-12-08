@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
+import Header from '../Header';
 
 const Login = () => {
     
@@ -24,6 +25,7 @@ const Login = () => {
                 console.log('vil')
             } else {
                 localStorage.setItem('userId',resp.data.id)
+                localStorage.setItem('userData',resp.data)
                 history.push('/');
             }
             
@@ -34,26 +36,30 @@ const Login = () => {
         e.preventDefault();
     }
     return (
-        <div class="page">
-            <div class="login_body">
-                <form onSubmit={handleSubmit}>
-                    <div class="mb-3">
-                        <label for="formGroupExampleInput" class="form-label">Email :</label>
-                        <input type="text" name="email" class="form-control" id="formGroupExampleInput" onChange={handleChange}/>
-                    </div>
+        <div>
+            <Header/>
+            <div class="page">
+                
+                <div class="login_body">
+                    <form onSubmit={handleSubmit}>
+                        <div class="mb-3">
+                            <label for="formGroupExampleInput" class="form-label">Email :</label>
+                            <input type="text" name="email" class="form-control" id="formGroupExampleInput" onChange={handleChange}/>
+                        </div>
 
-                    <div class="mb-3" style={{"marginTop": "20px"}}>
-                        <label for="formGroupExampleInput2" class="form-label">Password :</label>
-                        <input type="password" name="password" class="form-control" id="formGroupExampleInput2" onChange={handleChange}/>
-                    </div>
-                    <input type="submit" name="submit" value="Sign in" class="btn btn-primary login_button" />
-                    <div class="swap_between_login_register">
-                        <p>Don't have any account?</p>
-                        <u><Link to="/register"> Create an account</Link></u>
-                    </div>
-                </form>
+                        <div class="mb-3" style={{"marginTop": "20px"}}>
+                            <label for="formGroupExampleInput2" class="form-label">Password :</label>
+                            <input type="password" name="password" class="form-control" id="formGroupExampleInput2" onChange={handleChange}/>
+                        </div>
+                        <input type="submit" name="submit" value="Sign in" class="btn btn-primary login_button" />
+                        <div class="swap_between_login_register">
+                            <p>Don't have any account?</p>
+                            <u><Link to="/register"> Create an account</Link></u>
+                        </div>
+                    </form>
+                </div>
+            
             </div>
-        
         </div>
     );
 };

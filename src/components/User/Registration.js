@@ -1,7 +1,8 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-
+import { useHistory } from 'react-router-dom';
+import Header from '../Header';
 const Registration = () => {
   
     const [user,setUser]=useState({
@@ -15,18 +16,26 @@ const Registration = () => {
         newUser[e.target.name]= e.target.value
         setUser(newUser);
     }
+    const history=useHistory()
     const handleSubmit=(e)=>{
         
         console.log(user)
         axios.post('http://127.0.0.1:8000/api/register',user)
         .then(resp=>{
-            console.log(resp.data);
+            if (!resp.data) {
+              console.log('vil')
+          } else {
+              localStorage.setItem('userId',resp.data.id)
+              history.push('/');
+          }
         }).catch(err=>{
           console.log(err);
         });
         e.preventDefault();
     }
     return (
+      <div>
+        <Header/>
         <div className="register_page">
         <div className="register_body">
           <form onSubmit={handleSubmit}>
@@ -64,6 +73,7 @@ const Registration = () => {
           </form>  
         </div>
         
+      </div>
     </div>
     );
 };

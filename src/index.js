@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './components/index.css';
 import reportWebVitals from './reportWebVitals';
-import Header from './components/Header';
 import Home from './components/Home/Home';
 import Showpackages from './components/Home/Showpackages';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
@@ -14,11 +13,11 @@ import Packagesdetails from './components/Package/Packagesdetails';
 import Registration from './components/User/Registration';
 import Login from './components/User/Login';
 import Profile from './components/User/Profile';
+import Profiledata from './components/User/Profiledata';
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-      <Header></Header>
         <div className="container">
             <Switch>
 
@@ -51,7 +50,7 @@ ReactDOM.render(
               </Route>
               
               <Route exact path="/profile">
-                <Profile></Profile>
+                <Profiledata></Profiledata>
               </Route>
             </Switch>
           </div>
