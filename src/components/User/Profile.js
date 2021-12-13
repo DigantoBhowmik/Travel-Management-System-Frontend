@@ -1,36 +1,51 @@
 import axios from 'axios';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Header from '../Header';
+import { useHistory } from 'react-router-dom';
 
 const Profile = (props) => {
     const {id,name,email,role,password,phone}=props.user
-    console.log(props.user)
-    console.log(name)
+    //console.log(props.user)
+    //console.log(name);
     const [update,setUpdate]=useState({
-        id: id,
-        name: name,
-        email: email,
-        phone: phone,
-        role: role,
-        password: password
-    })
+        id: "",
+        name:"" ,
+        email:"" ,
+        phone:"" ,
+        role:"" ,
+        password:""
+    });
+    const mount=()=>{
+        setUpdate(
+            {...update,
+                id: id,
+                name: name,
+                email: email,
+                phone: phone ,
+                role:role,
+                password: password
+            }
+        )
+    }
+    useEffect(()=>{
+        
+        mount()
+     
+    },[])
+    console.log(update)
     
     const handleChange=(e)=>{
         const newUpdate={...update};
         newUpdate[e.target.name]= e.target.value
         setUpdate(newUpdate);
     }
-    console.log(update)
+    const history=useHistory()
     const handleSubmit=(e)=>{
         
         console.log(update)
         axios.post('http://127.0.0.1:8000/api/profile',update)
         .then(resp=>{
-            if (!resp.data) {
-              console.log('vil')
-          } else {
-              localStorage.setItem('userId',resp.data.id)
-          }
+            history.push('/profile')
         }).catch(err=>{
           console.log(err);
         });
@@ -59,7 +74,7 @@ const Profile = (props) => {
                 <div className="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
                 <div className="card h-100">
                     <div className="card-body">
-                        <form onSubmit={handleSubmit}>
+                        <form onSubmit={handleSubmit} >
                         <div className="row gutters">
                             <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                 <h6 className="mb-2 text-primary">Personal Details</h6>
@@ -67,8 +82,8 @@ const Profile = (props) => {
                             
                             <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                 <div className="form-group">
-                                    <label for="fullName">Full Name</label>
-                                    <input type="text" className="form-control" name="name" defaultValue={name} onChange={handleChange}/>
+                                    <label for="fullName" >Full Name</label>
+                                    <input type="text" className="form-control" name="name" defaultValue={name} onChange={handleChange} onClick={mount}/>
                                 </div>
                             </div>
                             

@@ -10,6 +10,7 @@ const Login = () => {
         email:"",
         password:""
     })
+    const [err,setErr]=useState("")
     const handleChange=(e)=>{
         const newUser={...event};
         newUser[e.target.name]= e.target.value
@@ -24,9 +25,20 @@ const Login = () => {
             if (!resp.data) {
                 console.log('vil')
             } else {
-                localStorage.setItem('userId',resp.data.id)
-                localStorage.setItem('userData',resp.data)
-                history.push('/');
+                if (resp.data.message) {
+                    console.log(resp.data)
+                    setEvent({
+                        email:"",
+                        password:""
+                    })
+                    setErr(resp.data.message)
+                } else {
+                    localStorage.setItem('userId',resp.data.id)
+                    localStorage.setItem('userData',resp.data)
+                    history.push('/');
+                }
+                
+                
             }
             
         }).catch(err=>{
@@ -41,6 +53,10 @@ const Login = () => {
             <div class="page">
                 
                 <div class="login_body">
+                {
+                    err?<div class="alert alert-info">{err}</div>:
+                    ""
+                }
                     <form onSubmit={handleSubmit}>
                         <div class="mb-3">
                             <label for="formGroupExampleInput" class="form-label">Email :</label>

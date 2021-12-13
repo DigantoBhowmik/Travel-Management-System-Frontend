@@ -12,7 +12,6 @@ import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import Packagesdetails from './components/Package/Packagesdetails';
 import Registration from './components/User/Registration';
 import Login from './components/User/Login';
-import Profile from './components/User/Profile';
 import Profiledata from './components/User/Profiledata';
 
 ReactDOM.render(
