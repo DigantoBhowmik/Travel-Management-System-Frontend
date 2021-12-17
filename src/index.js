@@ -6,13 +6,13 @@ import Home from './components/Home/Home';
 import Showpackages from './components/Home/Showpackages';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap'
-import Showevents from './components/Home/Showevents';
 import Footer from './components/Footer';
 import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import Packagesdetails from './components/Package/Packagesdetails';
 import Registration from './components/User/Registration';
 import Login from './components/User/Login';
 import Profiledata from './components/User/Profiledata';
+import Booking from './components/User/Booking';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -29,7 +29,7 @@ ReactDOM.render(
                 <div className="title">
                   <h2>Events</h2>
                 </div>
-                <Showevents></Showevents>
+                
               </Route>
 
               <Route exact path="/packages">
@@ -50,6 +50,10 @@ ReactDOM.render(
               
               <Route exact path="/profile">
                 <Profiledata></Profiledata>
+              </Route>
+
+              <Route exact path="/mybooking">
+                <Booking></Booking>
               </Route>
             </Switch>
           </div>
