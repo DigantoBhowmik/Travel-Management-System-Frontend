@@ -23,10 +23,11 @@ const Registration = () => {
         axios.post('http://127.0.0.1:8000/api/register',user)
         .then(resp=>{
             if (!resp.data) {
-              console.log('vil')
+              console.log('erorr')
           } else {
-              localStorage.setItem('userId',resp.data.id)
-              history.push('/');
+            localStorage.setItem('userId',resp.data.id)
+            localStorage.setItem('userData',resp.data)
+            history.push('/');
           }
         }).catch(err=>{
           console.log(err);
