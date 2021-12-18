@@ -3,16 +3,16 @@ import ReactDOM from 'react-dom';
 import './components/index.css';
 import reportWebVitals from './reportWebVitals';
 import Home from './components/Home/Home';
-import Showpackages from './components/Home/Showpackages';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap'
-import Showevents from './components/Home/Showevents';
 import Footer from './components/Footer';
 import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import Showpackages from './components/Package/Showpackages';
 import Packagesdetails from './components/Package/Packagesdetails';
 import Registration from './components/User/Registration';
 import Login from './components/User/Login';
 import Profiledata from './components/User/Profiledata';
+import Booking from './components/User/Booking';
 
 import AHome from './components/Admin/AHome';
 import ALogin from './components/Admin/ALogin';
@@ -35,14 +35,7 @@ ReactDOM.render(
 
               <Route exact path="/">
                 <Home></Home>
-                <div className="title">
-                  <h2>Packages</h2>
-                </div>
-                <Showpackages></Showpackages>
-                <div className="title">
-                  <h2>Events</h2>
-                </div>
-                <Showevents></Showevents>
+                
               </Route>
               
               <Route exact path="/packages">
@@ -134,6 +127,9 @@ ReactDOM.render(
 
 
               
+              <Route exact path="/mybooking">
+                <Booking></Booking>
+              </Route>
             </Switch>
           </div>
         <Footer></Footer>

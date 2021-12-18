@@ -48,7 +48,7 @@ const Header = () => {
                     user && user.role==='agent'?
                     <DropdownButton id="dropdown-basic-button" title={user.name}>
                         <Dropdown.Item href="/profile">My Profile</Dropdown.Item>
-                        <Dropdown.Item href="#/action-2">My Packages</Dropdown.Item>
+                        <Dropdown.Item href="/packages">My Packages</Dropdown.Item>
                         <Dropdown.Item href="#/action-3">My Events</Dropdown.Item>
                         <Dropdown.Item onClick={handleLogout} >Log out</Dropdown.Item>
                     </DropdownButton>
@@ -56,7 +56,7 @@ const Header = () => {
                     user && user.role==='user'?
                     <DropdownButton id="dropdown-basic-button" title={user.name}>
                         <Dropdown.Item href="/profile">My Profile</Dropdown.Item>
-                        <Dropdown.Item href="#/action-2">My Booking</Dropdown.Item>
+                        <Dropdown.Item href="/mybooking">My Booking</Dropdown.Item>
                         <Dropdown.Item onClick={handleLogout}>Log out</Dropdown.Item>
                     </DropdownButton>
                     :<ul class="nav navbar-nav">

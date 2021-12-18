@@ -5,7 +5,7 @@ import AHeader from '../AHeader';
 const Showpackages = () => {
     const [packages,setPackages]=useState([])
     useEffect(()=>{
-        axios.get('http://127.0.0.1:8000/api/packages/list')
+        axios.get('http://127.0.0.1:8000/api/packages')
         .then(res=>{
             setPackages(res.data);
             console.log(res.data)})
