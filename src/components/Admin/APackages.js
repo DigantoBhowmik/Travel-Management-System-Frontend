@@ -1,12 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const packages = (props) => {
+const Apackages = (props) => {
     const {id,name,price,shortdesc,image}=props.item
     return (
-        
             <div className="image-cards col-md-3">
-                <Link to={"/packagedetails/"+id}>
+                <Link to={"/adminpackagedetails/"+id}>
                 <div className="image-card">
                     <div className="image-card-banner">
                         <img src= {image} alt=""/>
@@ -26,4 +25,4 @@ const packages = (props) => {
     );
 };
 
-export default packages;
+export default Apackages;

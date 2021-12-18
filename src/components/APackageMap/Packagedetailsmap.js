@@ -1,6 +1,6 @@
 import React from 'react';
 import AHeader from '../AHeader';
-const Packagesdetailsmap = (props) => {
+const Packagedetailsmap = (props) => {
     const {name,price,shortdesc,desc}=props.item
     return (
         <div>
@@ -33,4 +33,4 @@ const Packagesdetailsmap = (props) => {
     );
 };
 
-export default Packagesdetailsmap;
+export default Packagedetailsmap;

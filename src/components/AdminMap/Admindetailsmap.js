@@ -1,11 +1,12 @@
+
 import React from 'react';
 import AHeader from '../AHeader';
-const Packagesdetailsmap = (props) => {
-    const {name,price,shortdesc,desc}=props.item
+const Admindetailsmap = (props) => {
+    const {name,email,phone}=props.ad
     return (
         <div>
             <AHeader></AHeader>
-            <legend> Package Details </legend>
+            <legend> Admin Details </legend>
     
             <div>
                 <table>
@@ -15,16 +16,12 @@ const Packagesdetailsmap = (props) => {
                             <td>{name}</td>
                         </tr>
                         <tr>
-                            <td>Price:</td>
-                            <td>{price}</td>
+                            <td>Email:</td>
+                            <td>{email}</td>
                         </tr>
                         <tr>
-                            <td>Short Description:</td>
-                            <td>{shortdesc}</td>
-                        </tr>
-                        <tr>
-                            <td>Description:</td>
-                            <td>{desc}</td>
+                            <td>Phone:</td>
+                            <td>{phone}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -33,4 +30,4 @@ const Packagesdetailsmap = (props) => {
     );
 };
 
-export default Packagesdetailsmap;
+export default Admindetailsmap;
