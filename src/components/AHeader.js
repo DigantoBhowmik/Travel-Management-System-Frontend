@@ -38,7 +38,7 @@ const AHeader = () => {
                     <ul class="nav-bar">
                         <li><Link to="/admindash">Home</Link></li>
                         <li><Link to="/admins">Admins</Link></li>
-                        <li><Link to="/packages">Packages</Link></li>
+                        <li><Link to="/adminpackages">Packages</Link></li>
                         <li><Link to="/events">Events</Link></li>
                         <li><Link to="/agents">Agents</Link></li>
                         <li><Link to="/users">Users</Link></li>

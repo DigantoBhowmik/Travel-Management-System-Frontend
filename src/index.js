@@ -24,6 +24,8 @@ import AShowevents from './components/Admin/AShowevents';
 import Eventdetails from './components/AEventMap/Eventdetails'; 
 import AShowagents from './components/Admin/AShowagents'; 
 import AShowusers from './components/Admin/AShowusers'; 
+import AShowpackages from './components/Admin/AShowpackages';
+import Packagedetails from './components/APackageMap/Packagedetails';
 
 import ACreate from './components/Admin/ACreate';
 
@@ -79,11 +81,11 @@ ReactDOM.render(
 
 
               {/* Admin Package routes */}
-              <Route exact path="/packages">
-                <Showpackages></Showpackages>
+              <Route exact path="/adminpackages">
+                <AShowpackages></AShowpackages>
               </Route>
-              <Route exact path="/packagedetails/:id">
-                <Packagesdetails></Packagesdetails>
+              <Route exact path="/adminpackagedetails/:id">
+                <Packagedetails></Packagedetails>
               </Route>
               
               {/* Admin Events routes */}
