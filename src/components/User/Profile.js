@@ -103,16 +103,8 @@ const Profile = (props) => {
                             <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                 <div className="form-group">
                                     <label for="website">Role</label>
-                                    {
-                                        role==='user'?
-                                        <select name="role" class="form-control" >
-                                            <option value="user" onChange={handleChange}>{role}</option>
-                                            <option value="agent" onChange={handleChange}>agent</option>
-                                        </select>
-                                        :<select  name="role" class="form-control">
-                                            <option value="agent">{role}</option>
-                                        </select>
-                                    }
+                                    <input type="text" className="form-control" name="role" defaultValue={role} onChange={handleChange}/>
+                                    
                                 </div>
                             </div>
                         </div>

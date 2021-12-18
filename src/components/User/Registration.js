@@ -19,6 +19,11 @@ const Registration = () => {
         );
     
 
+    const validatePassword = (pass) =>
+        pass.match(
+          /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/
+        );
+    
     const history=useHistory();
 
     const [nameErr, setNameErr] = useState("");
@@ -70,20 +75,16 @@ const Registration = () => {
             else
                 setPhoneErr("")
 
-            if(user.email === "")
-                setEmailErr("Please fill the Email");
-            else
-                setEmailErr("")
-
             if(!validateEmail(user.email))
                 setEmailErr("Please enter valid mail");
             else
                 setEmailErr("");
 
-            if(user.password === "")
-                setPasswordErr("Please fill the Password");
+            
+            if(!validatePassword(user.password))
+                setPasswordErr("Password must has at least 8 characters that include at least 1 lowercase character, 1 uppercase characters, 1 number, and 1 special character in (!@#$%^&*)");
             else
-                setPasswordErr("")
+                setPasswordErr("");
 
             if(user.Confirm_Password === "")
                 setRpasswordErr("Please fill the Confirm Password");

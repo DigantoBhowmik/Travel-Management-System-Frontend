@@ -25,7 +25,7 @@ const AHome = () => {
             <div class="bgimg">
 
 
-            console.log(id)
+            
             <h1 id="find">Welcome Home<br/> 
                 Admin</h1>
             

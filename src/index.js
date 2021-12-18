@@ -31,6 +31,7 @@ import AShowusers from './components/Admin/AShowusers';
 import AShowpackages from './components/Admin/AShowpackages';
 import Packagedetails from './components/APackageMap/Packagedetails'; 
 import AUsers from './components/Admin/AUsers';
+import ACreate from './components/Admin/ACreate';
 
 const user =localStorage.getItem('userData')
 console.log(user)
@@ -52,15 +53,24 @@ ReactDOM.render(
               </Route>
 
               <Route exact path="/createpackages">
-                <Createpackage/>
+                {(user)?
+                    <Createpackage/>
+                    :<Login></Login>}
+                
               </Route>
               
               <Route exact path="/editpackage/:id">
-                <Editpackagemap/>
+              {(user)?
+                    <Editpackagemap/>
+                    :<Login></Login>}
+                
               </Route>
 
               <Route exact path="/book/:id">
-                <Bookingpackagelist/>
+                {(user)?
+                    <Bookingpackagelist/>
+                    :<Login></Login>}
+                
               </Route>
 
               <Route exact path="/packagedetails/:id">
@@ -94,41 +104,65 @@ ReactDOM.render(
                
               {/* Part-1 [ Admindash]*/}
                <Route exact path="/admindash">
-                <AHome></AHome>
+                      <AHome></AHome>
               </Route>
               {/* Part-2 [Admins CRUD] */}
               <Route exact path="/admins">
-                <AShowadmins></AShowadmins>
+                  {(user)?
+                      <AShowadmins></AShowadmins>
+                      :<ALogin></ALogin>}
+                
               </Route>
               <Route exact path="/admindetails/:id">
-                <Admindetails></Admindetails>
+                  {(user)?
+                      <Admindetails></Admindetails>
+                      :<ALogin></ALogin>}
+                
               </Route>
 
 
               {/* Admin Package routes */}
               <Route exact path="/adminpackages">
-                <AShowpackages></AShowpackages>
+                  {(user)?
+                      <AShowpackages></AShowpackages>
+                      :<ALogin></ALogin>}
+                
               </Route>
               <Route exact path="/adminpackagedetails/:id">
-                <Packagedetails></Packagedetails>
+                   {(user)?
+                      <Packagedetails></Packagedetails>
+                      :<ALogin></ALogin>}
+                
               </Route>
               
               {/* Admin Events routes */}
               <Route exact path="/events">
-                <AShowevents></AShowevents>
+                  {(user)?
+                      <AShowevents></AShowevents>
+                      :<ALogin></ALogin>}
+                
               </Route>
               <Route exact path="/eventdetails/:id">
-                <Eventdetails></Eventdetails>
+                  {(user)?
+                      <Eventdetails></Eventdetails>
+                      :<ALogin></ALogin>}
+                
               </Route>
               
                {/* Admin Agents routes */}
                <Route exact path="/agents">
-                <AShowagents></AShowagents>
+                  {(user)?
+                      <AShowagents></AShowagents>
+                      :<ALogin></ALogin>}
+                
               </Route>
 
                {/* Admin Users routes */}
                <Route exact path="/users">
-                <AShowusers></AShowusers>
+                   {(user)?
+                      <AShowusers></AShowusers>
+                      :<ALogin></ALogin>}
+                
               </Route>
 
 
@@ -139,12 +173,18 @@ ReactDOM.render(
 
                {/* Admin Create */}
                <Route exact path="/admincreate">
-                <ACreate></ACreate>
+                   {(user)?
+                      <ACreate></ACreate>
+                      :<ALogin></ALogin>}
+                
               </Route>
 
               {/* Admin profile update */}
               <Route exact path="/Aprofile">
-                <AProfiledata></AProfiledata>
+                  {(user)?
+                      <AProfiledata></AProfiledata>
+                      :<ALogin></ALogin>}
+                
               </Route>
               
               <Route exact path="/userdelete/:id">

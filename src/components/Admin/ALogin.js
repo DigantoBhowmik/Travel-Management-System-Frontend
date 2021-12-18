@@ -58,6 +58,7 @@ const ALogin = () => {
                 }
                     <form onSubmit={handleSubmit}>
                         <div class="mb-3">
+                        <h2>Admin Login</h2>
                             <label for="formGroupExampleInput" class="form-label">Email :</label>
                             <input type="text" name="email" class="form-control" id="formGroupExampleInput" onChange={handleChange}/>
                         </div>
