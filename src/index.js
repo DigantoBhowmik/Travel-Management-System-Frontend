@@ -27,7 +27,9 @@ import AShowusers from './components/Admin/AShowusers';
 import AShowpackages from './components/Admin/AShowpackages';
 import Packagedetails from './components/APackageMap/Packagedetails';
 
-import ACreate from './components/Admin/ACreate';
+const user =localStorage.getItem('userData')
+console.log(user)
+
 
 ReactDOM.render(
   <React.StrictMode>
@@ -55,10 +57,16 @@ ReactDOM.render(
               <Route exact path="/login">
                 <Login></Login>
               </Route>
-             
-              <Route exact path="/profile">
-                <Profiledata></Profiledata>
-              </Route>
+              
+                
+                <Route exact path="/profile">
+                  {(user)?
+                    <Profiledata></Profiledata>
+                    :<Login></Login>}
+                </Route>
+                
+              
+              
 
 
 
@@ -130,7 +138,10 @@ ReactDOM.render(
 
               
               <Route exact path="/mybooking">
-                <Booking></Booking>
+                  {(user)?
+                    <Booking></Booking>
+                    :<Login></Login>}
+                
               </Route>
             </Switch>
           </div>
