@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import axios from 'axios';
 import EventdetailsView from "./EventdetailsView";
+import Header from "../Header";
 
 const Eventdetails = () => {
     const {id}=useParams();
@@ -16,6 +17,7 @@ const Eventdetails = () => {
     console.log(events)
     return (
         <div>
+            <Header/>
             <EventdetailsView item={events}/>
         </div>
     );
