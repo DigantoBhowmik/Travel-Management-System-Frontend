@@ -1,11 +1,11 @@
 import React from 'react';
 import AHeader from '../AHeader';
-const Packagesdetailsmap = (props) => {
-    const {name,price,shortdesc,desc}=props.item
+const Eventdetailsmap = (props) => {
+    const {name,shortdesc,desc,price,startdate,enddate,deadline,image,agentid}=props.item
     return (
         <div>
             <AHeader></AHeader>
-            <legend> Package Details </legend>
+            <legend> Events Details </legend>
     
             <div>
                 <table>
@@ -26,6 +26,22 @@ const Packagesdetailsmap = (props) => {
                             <td>Description:</td>
                             <td>{desc}</td>
                         </tr>
+                        <tr>
+                            <td>startdate:</td>
+                            <td>{startdate}</td>
+                        </tr>
+                        <tr>
+                            <td>enddate:</td>
+                            <td>{enddate}</td>
+                        </tr>
+                        <tr>
+                            <td>deadline:</td>
+                            <td>{deadline}</td>
+                        </tr>
+                        <tr>
+                            <td>agendid:</td>
+                            <td>{agentid}</td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -33,4 +49,4 @@ const Packagesdetailsmap = (props) => {
     );
 };
 
-export default Packagesdetailsmap;
+export default Eventdetailsmap;

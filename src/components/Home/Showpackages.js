@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Packages from './Packages';
+import AHeader from '../AHeader';
 const Showpackages = () => {
     const [packages,setPackages]=useState([])
     useEffect(()=>{
@@ -12,7 +13,7 @@ const Showpackages = () => {
     
     return (
         <div>
-            
+          <AHeader></AHeader>
             <div className="row">
                 
                 {
