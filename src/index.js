@@ -13,6 +13,10 @@ import Registration from './components/User/Registration';
 import Login from './components/User/Login';
 import Profiledata from './components/User/Profiledata';
 import Booking from './components/User/Booking';
+import Createpackage from './components/Agent/Createpackage';
+import Bookingpackagelist from './components/Agent/Bookingpackagelist';
+import Editpackage from './components/Agent/Editpackage';
+import Editpackagemap from './components/Agent/Editpackagemap';
 
 import AHome from './components/Admin/AHome';
 import ALogin from './components/Admin/ALogin';
@@ -25,7 +29,8 @@ import Eventdetails from './components/AEventMap/Eventdetails';
 import AShowagents from './components/Admin/AShowagents'; 
 import AShowusers from './components/Admin/AShowusers'; 
 import AShowpackages from './components/Admin/AShowpackages';
-import Packagedetails from './components/APackageMap/Packagedetails';
+import Packagedetails from './components/APackageMap/Packagedetails'; 
+import AUsers from './components/Admin/AUsers';
 
 const user =localStorage.getItem('userData')
 console.log(user)
@@ -44,6 +49,18 @@ ReactDOM.render(
               
               <Route exact path="/packages">
                 <Showpackages></Showpackages>
+              </Route>
+
+              <Route exact path="/createpackages">
+                <Createpackage/>
+              </Route>
+              
+              <Route exact path="/editpackage/:id">
+                <Editpackagemap/>
+              </Route>
+
+              <Route exact path="/book/:id">
+                <Bookingpackagelist/>
               </Route>
 
               <Route exact path="/packagedetails/:id">
@@ -120,14 +137,19 @@ ReactDOM.render(
                 <ALogin></ALogin>
               </Route> 
 
-               {/* Admin Create
-               <Route exact path="/create">
+               {/* Admin Create */}
+               <Route exact path="/admincreate">
                 <ACreate></ACreate>
-              </Route> */}
+              </Route>
 
               {/* Admin profile update */}
               <Route exact path="/Aprofile">
                 <AProfiledata></AProfiledata>
+              </Route>
+              
+              <Route exact path="/userdelete/:id">
+              
+                <AUsers></AUsers>
               </Route>
 
               

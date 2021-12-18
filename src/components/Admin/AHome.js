@@ -23,9 +23,11 @@ const AHome = () => {
         <div>
             <AHeader></AHeader> 
             <div class="bgimg">
-                
-            <h1 id="find">Find Your Next<br/>
-                Tour Destinations</h1>
+
+
+            console.log(id)
+            <h1 id="find">Welcome Home<br/> 
+                Admin</h1>
             
             </div>
         </div>

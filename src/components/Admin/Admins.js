@@ -6,22 +6,6 @@ const admins = (props) => {
     const {id,name,email,phone}=props.ad
     return (
 
-            // <div className="image-cards col-md-3">
-            //     <Link to={"/admindetails/"+id}>
-            //     <div className="image-card">
-                    
-            //         <div className="card-details">
-            //         <p><i className="fas fa-clock"></i>ID :{id}</p>  
-            //         <p><i className="fas fa-clock"></i>Name :{name}</p>
-            //         {/* <p><i className="fas fa-clock"></i>Email :{email}</p>  
-            //         <p><i className="fas fa-clock"></i>Phone Number :{phone}</p> */}
-                   
-            //         <Link to={"/delete"}></Link>
-
-            //         </div>
-            //     </div>
-            //     </Link>
-            // </div>
             <div className="image-cards col-md-3">
                 <Link to={"/admindetails/"+id}>
                     

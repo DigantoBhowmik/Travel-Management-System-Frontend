@@ -1,12 +1,14 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 const AUsers = (props) => {
     const {id,name,email,phone,password}=props.item
     return (
         
 
             <div className="image-cards col-md-3">
+                
                <table>
+              
                     <tbody>
                         <tr>
                             <td>Name:</td>
@@ -29,7 +31,10 @@ const AUsers = (props) => {
                             <td>{password}</td>
                         </tr>
                         
+                        
+                        
                     </tbody>
+                    <Link to={"/userdelete/"+id}><h4><b>Delete</b></h4></Link>
                 </table>
             </div>
     );
