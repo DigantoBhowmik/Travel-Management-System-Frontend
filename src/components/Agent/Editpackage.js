@@ -43,15 +43,54 @@ const Editpackage = (props) => {
     }
 
     const history=useHistory()
+    const [nameErr, setNameErr]=useState("");
+    const [priceErr, setPriceErr]=useState("");
+    const [shortdescErr, setShortdescErr]=useState("");
+    const [descErr, setDescErr]=useState("");
+    const [imageErr, setImageErr]=useState("");
+
     const handleSubmit=(e)=>{
-        console.log(update)
-        axios.post(`http://127.0.0.1:8000/api/editpackage/${id}`,update)
-        .then(resp=>{
-            console.log(resp.data)
-        }).catch(err=>{
-          console.log(err);
-        });
         e.preventDefault();
+        if(update.name!=="" && update.price!=="" && update.shortdesc!=="" && update.desc!=="" && update.image!=="")
+        {
+            console.log(update)
+            axios.post(`http://127.0.0.1:8000/api/editpackage/${id}`,update)
+            .then(resp=>{
+                if(!resp.data){
+                    console.log('error')
+                }
+                else{
+                    history.push('/createpackages')
+                }
+                //console.log(resp.data)
+            }).catch(err=>{
+            console.log(err);
+            });
+        }
+        else
+        {
+            if(update.name==="")
+                setNameErr("Name is required");
+            else
+                setNameErr("")
+
+            if(update.price==="")
+                setPriceErr("Price is required")
+            else
+                setPriceErr("")
+            if(update.shortdesc==="")
+                setShortdescErr("Short Description is required")
+            else
+                setShortdescErr("")
+            if(update.desc==="")
+                setDescErr("Description is required")
+            else
+                setDescErr("")
+            if(update.image==="")
+                setImageErr("Image is required")
+            else
+                setImageErr("")
+        }
     }
 
 
@@ -63,22 +102,27 @@ const Editpackage = (props) => {
             <div class="mb-6">
                 <label for="formGroupExampleInput" className="form-label">Package Name :</label>
                 <input type="text" name="name" className="form-control" id="formGroupExampleInput" defaultValue={name} onChange={handleChange} onClick={mount} />
+                <p style={{color: "red"}}>{nameErr}</p>
               </div>
             <div className="mb-3">
                 <label for="formGroupExampleInput" className="form-label" style={{marginTop: "20px"}}>Price :</label>
                 <input type="text" name="price" className="form-control" id="formGroupExampleInput" defaultValue={price} onChange={handleChange}/>
+                <p style={{color: "red"}}>{priceErr}</p>
               </div>
               <div className="mb-3">
                 <label for="formGroupExampleInput" className="form-label" style={{marginTop: "20px"}}>Short Description</label>
                 <input type="text" name="shortdesc" className="form-control" id="formGroupExampleInput" defaultValue={shortdesc} onChange={handleChange} />
+                <p style={{color: "red"}}>{shortdescErr}</p>
               </div>
               <div className="mb-3">
                 <label for="formGroupExampleInput" className="form-label" style={{marginTop: "20px"}}>Description</label>
                 <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" name="desc" defaultValue={desc} onChange={handleChange}></textarea>
+                <p style={{color: "red"}}>{descErr}</p>
               </div>
               <div className="mb-3">
                 <label for="formGroupExampleInput" className="form-label" style={{marginTop: "20px"}}>Image</label>
                 <input className="form-control" id="exampleFormControlTextarea1" rows="3" name="image" defaultValue={image} onChange={handleChange}/>
+                <p style={{color: "red"}}>{imageErr}</p>
               </div>
 
               {/* <div className="mb-3" hidden>
