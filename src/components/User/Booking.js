@@ -6,9 +6,11 @@ import Bookingevent from './Bookingevent';
 
 const Booking = () => {
     const id=localStorage.getItem('userId');
+
     const [packages,setPackages]=useState([]);
+
     const [events,setEvents]=useState([]);
-    console.log(packages)
+
     useEffect(()=>{
         axios.get(`http://127.0.0.1:8000/api/mybookingPackage/${id}`)
         .then(res=>{
@@ -16,6 +18,7 @@ const Booking = () => {
             setPackages(res.data)    
         })
     },[]);
+
     useEffect(()=>{
         axios.get(`http://127.0.0.1:8000/api/mybookingEvent/${id}`)
         .then(res=>{
@@ -23,6 +26,7 @@ const Booking = () => {
             setEvents(res.data)    
         })
     },[]);
+
     return (
         <div>
             <Header></Header>
@@ -39,8 +43,6 @@ const Booking = () => {
                     events.map(event=><Bookingevent event={event}></Bookingevent>)
                 }
             </div>
-            
-            
         </div>
     );
 };

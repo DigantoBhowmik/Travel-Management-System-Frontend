@@ -5,7 +5,7 @@ const Bookingpackage = (props) => {
     
     return (
         <div>
-            <table class="table">
+            <table className="table">
             <thead>
                 <tr>
                 
