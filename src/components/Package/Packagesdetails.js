@@ -13,7 +13,7 @@ const Packagesdetails = () => {
             console.log(res.data);
             setPackage(res.data)    
         })
-    })
+    },[])
     console.log(Package)
     return (
         <div>
