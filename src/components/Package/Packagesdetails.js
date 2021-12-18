@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import { useParams } from 'react-router';
 import axios from 'axios';
 import Packagesdetailsmap from './Packagesdetailsmap';
+import Header from '../Header';
 
 const Packagesdetails = () => {
     const {id}=useParams()
@@ -16,6 +17,7 @@ const Packagesdetails = () => {
     console.log(Package)
     return (
         <div>
+            <Header/>
             {
                 <Packagesdetailsmap item={Package}></Packagesdetailsmap>
             }

@@ -1,10 +1,11 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import Packages from './Packages';
+import Packages from '../Package/Packages';
+import Header from '../Header';
 const Showpackages = () => {
     const [packages,setPackages]=useState([])
     useEffect(()=>{
-        axios.get('http://127.0.0.1:8000/api/packages/list')
+        axios.get('http://127.0.0.1:8000/api/packages')
         .then(res=>{
             setPackages(res.data);
             console.log(res.data)})
@@ -12,6 +13,7 @@ const Showpackages = () => {
     
     return (
         <div>
+            <Header></Header>
             
             <div className="row">
                 
