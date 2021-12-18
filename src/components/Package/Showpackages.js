@@ -12,15 +12,15 @@ const Showpackages = () => {
     },[])
     
     return (
-        <div>
-          <Header></Header>
-            <div className="row">
-                
+          <div className="row">
+                <div className="title">
+                    <Header/>
+                    <h2><center>Packages</center></h2>
+                    </div>
                 {
                     packages.map(packag=><Packages item={packag}></Packages>)
                 }
             </div>
-        </div>
     );
     
 };

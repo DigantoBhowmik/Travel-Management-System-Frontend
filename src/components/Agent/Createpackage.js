@@ -17,6 +17,11 @@ const Createpackage = () => {
     })
 
     const history=useHistory();
+    const [nameErr, setNameErr]=useState("");
+    const [priceErr, setPriceErr]=useState("");
+    const [shortdescErr, setShortdescErr]=useState("");
+    const [descErr, setDescErr]=useState("");
+    const [imageErr, setImageErr]=useState("");
 
     const handleChange=(e)=>{
         const newPackages={...packages};
@@ -25,7 +30,11 @@ const Createpackage = () => {
     }
     packages.agentname=id
     console.log(packages.agentname)
+
     const handleSubmit=(e)=>{
+        e.preventDefault();
+        if(packages.name!=="" && packages.price!=="" && packages.shortdesc!=="" && packages.desc!=="" && packages.image!=="")
+        {
             axios.post('http://127.0.0.1:8000/api/createpackages',packages)
             .then(resp=>{
               if (!resp.data) {
@@ -37,7 +46,32 @@ const Createpackage = () => {
            }).catch(err=>{
               console.log(err);
             });
-            e.preventDefault();
+        }
+        else{
+            if(packages.name==="")
+                setNameErr("Name is required");
+            else
+                setNameErr("")
+
+            if(packages.price==="")
+                setPriceErr("Price is required")
+            else
+                setPriceErr("")
+            if(packages.shortdesc==="")
+                setShortdescErr("Short Description is required")
+            else
+                setShortdescErr("")
+            if(packages.desc==="")
+                setDescErr("Description is required")
+            else
+                setDescErr("")
+            if(packages.image==="")
+                setImageErr("Image is required")
+            else
+                setImageErr("")
+
+        }
+            
     }
 
     return (
@@ -49,22 +83,27 @@ const Createpackage = () => {
             <div className="mb-6">
                 <label for="formGroupExampleInput" className="form-label">Package Name :</label>
                 <input type="text" name="name" className="form-control" id="formGroupExampleInput" onChange={handleChange}/>
+                <p style={{color: "red"}}>{nameErr}</p>
               </div>
             <div className="mb-3">
                 <label for="formGroupExampleInput" className="form-label" style={{marginTop: "20px"}} >Price :</label>
                 <input type="text" name="price" className="form-control" id="formGroupExampleInput" onChange={handleChange}/>
+                <p style={{color: "red"}}>{priceErr}</p>
               </div>
               <div className="mb-3">
                 <label for="formGroupExampleInput" className="form-label" style={{marginTop: "20px"}}>Short Description</label>
                 <input type="text" name="shortdesc" className="form-control" id="formGroupExampleInput" onChange={handleChange}/>
+                <p style={{color: "red"}}>{shortdescErr}</p>
               </div>
               <div className="mb-3">
                 <label for="formGroupExampleInput" className="form-label" style={{marginTop: "20px"}}>Description</label>
                 <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" name="desc" onChange={handleChange}></textarea>
+                <p style={{color: "red"}}>{descErr}</p>
               </div>
               <div className="mb-3">
                 <label for="formGroupExampleInput" className="form-label" style={{marginTop: "20px"}}>Image</label>
                 <input className="form-control" id="exampleFormControlTextarea1" rows="3" name="image" onChange={handleChange}/>
+                <p style={{color: "red"}}>{imageErr}</p>
               </div>
 
               {/* <div className="mb-3">
