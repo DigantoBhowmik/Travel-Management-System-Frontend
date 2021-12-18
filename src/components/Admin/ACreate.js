@@ -1,120 +1,143 @@
 import axios from 'axios';
-import React, {useEffect, useState} from 'react';
-import AHeader from '../AHeader';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import AHeader from '../AHeader';
+const ACreate = () => {
+  
+    const [user,setUser]=useState({
+        name:"",
+        email:"",
+        phone:"",
+        password:"",
+        Confirm_Password:""
+    })
 
-const ACreate = (props) => {
-    const {name,email,phone,password}=props.user
+    const validateEmail = (email) =>
+        email.match(
+          /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        );
     
-    const [update,setUpdate]=useState({
-       
-        name:"" ,
-        email:"" ,
-        phone:"" ,
-        password:""
-    });
-    const mount=()=>{
-        setUpdate(
-            {...update,
-                
-                name: name,
-                email: email,
-                phone: phone ,
-                password: password
-            }
-        )
-    }
-    useEffect(()=>{
-        
-        mount()
-     
-    },[])
-    console.log(update)
-    
+
+    const history=useHistory();
+
+    const [nameErr, setNameErr] = useState("");
+    const [emailErr, setEmailErr] = useState("");
+    const [phoneErr, setPhoneErr] = useState("");
+    const [passwordErr, setPasswordErr] = useState("");
+    const [rpasswordErr, setRpasswordErr] = useState("");
+
+      
     const handleChange=(e)=>{
-        const newUpdate={...update};
-        newUpdate[e.target.name]= e.target.value
-        setUpdate(newUpdate);
+      const newUser={...user};
+      newUser[e.target.name]= e.target.value
+      setUser(newUser);
     }
-    const history=useHistory()
+
     const handleSubmit=(e)=>{
         
-        console.log(update)
-        axios.post('http://127.0.0.1:8000/api/create',update)
-        .then(resp=>{
-            history.push('/create')
-        }).catch(err=>{
-          console.log(err);
-        });
+        console.log(user)
         e.preventDefault();
+        if(user.name !== ""  && user.phone !== "" && user.email !== "" &&  user.password !== "" && user.Confirm_Password !== "" && user.password===user.Confirm_Password ) 
+        {
+            setNameErr("")
+            setPhoneErr("")
+            setPasswordErr("")
+            setRpasswordErr("")
+            axios.post('http://127.0.0.1:8000/api/admincreate',user)
+            .then(resp=>{
+              if (!resp.data) {
+                console.log('erorr')
+            } else {
+              // localStorage.setItem('userId',resp.data.id)
+              // localStorage.setItem('userData',resp.data)
+              history.push('/admins');
+            }
+           }).catch(err=>{
+              console.log(err);
+              setEmailErr("This mail is already used by someone else")
+            });
+           
+        }
+        else{
+            if(user.name === "")
+                setNameErr("Please Fill up the name");
+            else
+                setNameErr("")
+
+            if(user.phone === "")
+                setPhoneErr("Please Fill up the phone number");
+            else
+                setPhoneErr("")
+
+            if(user.email === "")
+                setEmailErr("Please give the Email Address");
+            else
+                setEmailErr("")
+
+            if(!validateEmail(user.email))
+                setEmailErr("Please Enter Valid Email Address");
+            else
+                setEmailErr("");
+
+            if(user.password === "")
+                setPasswordErr("Please fill the Password");
+            else
+                setPasswordErr("")
+
+            if(user.Confirm_Password === "")
+                setRpasswordErr("Please fill the Confirm Password");
+            else
+                setRpasswordErr("")
+
+            if(user.password !== user.Confirm_Password)
+                setRpasswordErr("Confirm Password Doestn't Match With Password");
+            else
+                setRpasswordErr("")
+        }
+        
     }
+
+    
     return (
-        <div>
-            <AHeader/>
-            <div className="row gutters" style={{marginTop:"50px"}}>
-                
-                <div className="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
-                <div className="card h-100">
-                    <div className="card-body">
-                        <form onSubmit={handleSubmit} >
-                        <div className="row gutters">
-                            <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                <h6 className="mb-2 text-primary">Admin Create</h6>
-                            </div>
-                            
-                            <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                                <div className="form-group">
-                                    <label for="fullName" >Full Name</label>
-                                    <input type="text" className="form-control" name="name"  onChange={handleChange} onClick={mount}/>
-                                </div>
-                            </div>
-                            
-                            <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                                <div className="form-group">
-                                    <label for="eMail">Email</label>
-                                    <input type="email" className="form-control" name="email"  onChange={handleChange}/>
-                                </div>
-                            </div>
-                            <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                                <div className="form-group">
-                                    <label for="phone">Phone</label>
-                                    <input type="text" className="form-control" name="phone" onChange={handleChange}/>
-                                </div>
-                            </div>
-                            
-                          </div>
-                        
-                        <div className="row gutters">
-                            <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                <h6 className="mt-3 mb-2 text-primary">Change Password</h6>
-                            </div>
-                            <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                                <div className="form-group">
-                                    <label for="Password">Password</label>
-                                    <input type="password" className="form-control" name="password" onChange={handleChange}/>
-                                </div>
-                            </div>
-                           
-                        
-                        </div>
-                        
-                        <div className="row gutters">
-                            <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                <div className="text-right">
-                                    <input type="submit" name="Create" value="UPDATE" className="btn btn-primary login_button"/>
-                                </div>
-                            </div>
-                        </div>
-                    
-                        </form>
-                    </div>
-                    
-                </div>
-                
-                </div>
-            
-            </div>
+      <div>
+        <AHeader/>
+        <div className="register_page">
+        <div className="register_body">
+          <form onSubmit={handleSubmit}>
+              <h2><u>Create An Admin</u></h2> 
+              <br></br>
+            <div className="mb-3">
+                <label for="formGroupExampleInput" className="form-label">Full Name :</label>
+                <input type="text" name="name" className="form-control" id="formGroupExampleInput" onChange={handleChange}/>
+                <p style={{color: "red"}}>{nameErr}</p>
+              </div>
+            <div className="mb-3">
+                <label for="formGroupExampleInput" className="form-label" style={{marginTop: "20px"}}>Email :</label>
+                <input type="text" name="email" className="form-control" id="formGroupExampleInput" onChange={handleChange}/>
+                <p style={{color: "red"}}>{emailErr}</p>
+              </div>
+              <div className="mb-3">
+                <label for="formGroupExampleInput" className="form-label" style={{marginTop: "20px"}}>Phone :</label>
+                <input type="text" name="phone" className="form-control" id="formGroupExampleInput" onChange={handleChange}/>
+                <p style={{color: "red"}}>{phoneErr}</p>
+              </div>
+
+              <div className="mb-3" style={{marginTop: "20px"}}>
+                <label for="formGroupExampleInput2" className="form-label">Password :</label>
+                <input type="password" name="password" className="form-control" id="formGroupExampleInput2" onChange={handleChange}/>
+                <p style={{color: "red"}}>{passwordErr}</p>
+              </div>
+              <div className="mb-3" style={{marginTop: "20px"}}>
+                <label for="formGroupExampleInput2" className="form-label">Confirm Password :</label>
+                <input type="password" name="Confirm_Password" className="form-control" id="formGroupExampleInput2" onChange={handleChange}/>
+                <p style={{color: "red"}}>{rpasswordErr}</p>
+              </div>
+              <input type="submit" name="submit" value="Create Admin" className="btn btn-primary login_button"/>
+          </form>  
         </div>
+        
+      </div>
+    </div>
     );
 };
 

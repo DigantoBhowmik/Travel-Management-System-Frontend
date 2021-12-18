@@ -1,10 +1,10 @@
 import React from 'react';
-import AHeader from '../AHeader';
+import Header from '../Header';
 const Packagesdetailsmap = (props) => {
     const {name,price,shortdesc,desc}=props.item
     return (
         <div>
-            <AHeader></AHeader>
+            <Header></Header>
             <legend> Package Details </legend>
     
             <div>

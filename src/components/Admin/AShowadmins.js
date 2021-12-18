@@ -17,7 +17,7 @@ const AShowadmins = () => {
         
         <div>
             <AHeader></AHeader>
-            <Link to="/create"><h4><b>Create An Admin</b></h4></Link>
+            <Link to="/admincreate"><h4><b>Create An Admin</b></h4></Link>
             
             <div className="row">
             

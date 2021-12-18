@@ -25,7 +25,8 @@ import Eventdetails from './components/AEventMap/Eventdetails';
 import AShowagents from './components/Admin/AShowagents'; 
 import AShowusers from './components/Admin/AShowusers'; 
 import AShowpackages from './components/Admin/AShowpackages';
-import Packagedetails from './components/APackageMap/Packagedetails';
+import Packagedetails from './components/APackageMap/Packagedetails'; 
+import AUsers from './components/Admin/AUsers';
 
 import ACreate from './components/Admin/ACreate';
 
@@ -112,14 +113,19 @@ ReactDOM.render(
                 <ALogin></ALogin>
               </Route> 
 
-               {/* Admin Create
-               <Route exact path="/create">
+               {/* Admin Create */}
+               <Route exact path="/admincreate">
                 <ACreate></ACreate>
-              </Route> */}
+              </Route>
 
               {/* Admin profile update */}
               <Route exact path="/Aprofile">
                 <AProfiledata></AProfiledata>
+              </Route>
+              
+              <Route exact path="/userdelete/:id">
+              
+                <AUsers></AUsers>
               </Route>
 
               
