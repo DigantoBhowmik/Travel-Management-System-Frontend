@@ -40,6 +40,7 @@ const Profile = (props) => {
         setUpdate(newUpdate);
     }
     const history=useHistory()
+
     const handleSubmit=(e)=>{
         
         console.log(update)
