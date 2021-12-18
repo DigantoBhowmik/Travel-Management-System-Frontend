@@ -1,10 +1,10 @@
 import React from 'react';
-import Header from '../Header';
-const Packagesdetailsmap = (props) => {
-    const {name,price,shortdesc,desc}=props.item
+
+const EventdetailsView = (props) => {
+    const {id,name,price,shortdesc,desc}=props.item
     return (
         <div>
-            <legend> Package Details </legend>
+            <legend> Event Details </legend>
     
             <div>
                 <table>
@@ -31,5 +31,4 @@ const Packagesdetailsmap = (props) => {
         </div>
     );
 };
-
-export default Packagesdetailsmap;
+export default EventdetailsView;
