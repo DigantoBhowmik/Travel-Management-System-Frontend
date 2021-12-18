@@ -1,10 +1,10 @@
 import React from 'react';
-import Header from '../Header';
-const Packagesdetailsmap = (props) => {
+import AHeader from '../AHeader';
+const Packagedetailsmap = (props) => {
     const {name,price,shortdesc,desc}=props.item
     return (
         <div>
-            <Header></Header>
+            <AHeader></AHeader>
             <legend> Package Details </legend>
     
             <div>
@@ -33,4 +33,4 @@ const Packagesdetailsmap = (props) => {
     );
 };
 
-export default Packagesdetailsmap;
+export default Packagedetailsmap;

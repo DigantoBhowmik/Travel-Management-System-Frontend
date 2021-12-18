@@ -23,18 +23,18 @@ const Header = () => {
         <div>
             
             <section>
-                <div class="Topbar">
-                <div class="top">
+                <div className="Topbar">
+                <div className="top">
                     <p>We’re here to provide 24/7 at your service</p>
                 </div>
-                <div class="top">
-                    <p><i class="fas fa-phone-alt"></i>01767145146 <i class="far fa-envelope"></i> ghuraghuri@gmail.com</p>
+                <div className="top">
+                    <p><i className="fas fa-phone-alt"></i>01767145146 <i className="far fa-envelope"></i> ghuraghuri@gmail.com</p>
                 </div>
                 </div>
             </section>
             <header>
                 <nav className=""  >
-                    <ul class="nav-bar">
+                    <ul className="nav-bar">
                         <li><Link to="/">Home</Link></li>
                         <li><Link to="/packages">Packages</Link></li>
                         <li><Link to="">Events</Link></li>
@@ -59,7 +59,7 @@ const Header = () => {
                         <Dropdown.Item href="/mybooking">My Booking</Dropdown.Item>
                         <Dropdown.Item onClick={handleLogout}>Log out</Dropdown.Item>
                     </DropdownButton>
-                    :<ul class="nav navbar-nav">
+                    :<ul className="nav navbar-nav">
                         <li>
                             <Link to="/login" className="btn"><span ></span>Sign in</Link>
                         </li>

@@ -1,18 +1,16 @@
 import axios from 'axios';
 import React, {useEffect, useState} from 'react';
-import Header from '../Header';
+import AHeader from '../AHeader';
 import { useHistory } from 'react-router-dom';
 
-const Profile = (props) => {
-    const {id,name,email,role,password,phone}=props.user
-    //console.log(props.user)
-    //console.log(name);
+const AProfile = (props) => {
+    const {id,name,email,phone,password}=props.user
+    
     const [update,setUpdate]=useState({
         id: "",
         name:"" ,
         email:"" ,
         phone:"" ,
-        role:"" ,
         password:""
     });
     const mount=()=>{
@@ -22,7 +20,6 @@ const Profile = (props) => {
                 name: name,
                 email: email,
                 phone: phone ,
-                role:role,
                 password: password
             }
         )
@@ -40,13 +37,12 @@ const Profile = (props) => {
         setUpdate(newUpdate);
     }
     const history=useHistory()
-
     const handleSubmit=(e)=>{
         
         console.log(update)
-        axios.post('http://127.0.0.1:8000/api/profile',update)
+        axios.post('http://127.0.0.1:8000/api/Aprofile',update)
         .then(resp=>{
-            history.push('/profile')
+            history.push('/Aprofile')
         }).catch(err=>{
           console.log(err);
         });
@@ -54,14 +50,13 @@ const Profile = (props) => {
     }
     return (
         <div>
-            <Header/>
+            <AHeader/>
             <div className="row gutters" style={{marginTop:"50px"}}>
                 <div className="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
                 <div className="card h-100">
                     <div className="card-body">
                         <div className="account-settings">
                             <div className="user-profile">
-                            
                                 <h5 className="user-name"><i className="fas fa-user"></i><b> {name}</b></h5>
                                 <h6 className="user-email"><i className="fas fa-envelope"></i><b> {email}</b></h6>
                                 <h5 className="user-name"><i className="fas fa-phone-alt"></i><b> {phone}</b></h5>
@@ -78,7 +73,7 @@ const Profile = (props) => {
                         <form onSubmit={handleSubmit} >
                         <div className="row gutters">
                             <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                <h6 className="mb-2 text-primary">Personal Details</h6>
+                                <h6 className="mb-2 text-primary">Admin Personal Details</h6>
                             </div>
                             
                             <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
@@ -100,22 +95,8 @@ const Profile = (props) => {
                                     <input type="text" className="form-control" name="phone" defaultValue={phone} onChange={handleChange}/>
                                 </div>
                             </div>
-                            <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                                <div className="form-group">
-                                    <label for="website">Role</label>
-                                    {
-                                        role==='user'?
-                                        <select name="role" class="form-control" >
-                                            <option value="user" onChange={handleChange}>{role}</option>
-                                            <option value="agent" onChange={handleChange}>agent</option>
-                                        </select>
-                                        :<select  name="role" class="form-control">
-                                            <option value="agent">{role}</option>
-                                        </select>
-                                    }
-                                </div>
-                            </div>
-                        </div>
+                            
+                          </div>
                         
                         <div className="row gutters">
                             <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
@@ -156,4 +137,4 @@ const Profile = (props) => {
     );
 };
 
-export default Profile;
+export default AProfile;
