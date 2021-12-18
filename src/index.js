@@ -13,6 +13,7 @@ import Packagesdetails from './components/Package/Packagesdetails';
 import Registration from './components/User/Registration';
 import Login from './components/User/Login';
 import Profiledata from './components/User/Profiledata';
+import Packagedata from './components/Home/agent/Packagedata';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -22,14 +23,7 @@ ReactDOM.render(
 
               <Route exact path="/">
                 <Home></Home>
-                <div className="title">
-                  <h2>Packages</h2>
-                </div>
-                <Showpackages></Showpackages>
-                <div className="title">
-                  <h2>Events</h2>
-                </div>
-                <Showevents></Showevents>
+                
               </Route>
 
               <Route exact path="/packages">
@@ -50,6 +44,9 @@ ReactDOM.render(
               
               <Route exact path="/profile">
                 <Profiledata></Profiledata>
+              </Route>
+              <Route exact path="/createpackges">
+                <Packagedata/>
               </Route>
             </Switch>
           </div>
