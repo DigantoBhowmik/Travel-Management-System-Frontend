@@ -13,6 +13,10 @@ import Registration from './components/User/Registration';
 import Login from './components/User/Login';
 import Profiledata from './components/User/Profiledata';
 import Booking from './components/User/Booking';
+import Createpackage from './components/Agent/Createpackage';
+import Bookingpackagelist from './components/Agent/Bookingpackagelist';
+import Editpackage from './components/Agent/Editpackage';
+import Editpackagemap from './components/Agent/Editpackagemap';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -27,6 +31,18 @@ ReactDOM.render(
 
               <Route exact path="/packages">
                 <Showpackages></Showpackages>
+              </Route>
+
+              <Route exact path="/createpackages">
+                <Createpackage/>
+              </Route>
+              
+              <Route exact path="/editpackage/:id">
+                <Editpackagemap/>
+              </Route>
+
+              <Route exact path="/book/:id">
+                <Bookingpackagelist/>
               </Route>
 
               <Route exact path="/packagedetails/:id">
