@@ -34,6 +34,7 @@ import AUsers from './components/Admin/AUsers';
 import ACreate from './components/Admin/ACreate';
 import EventView from './components/Event/EventView';
 import EventdetailsView from './components/Event/Eventdetails';
+import Deletepackage from './components/Agent/Deletepackage';
 
 const user =localStorage.getItem('userData')
 console.log(user)
@@ -66,6 +67,13 @@ ReactDOM.render(
               <Route exact path="/editpackage/:id">
               {(user)?
                     <Editpackagemap/>
+                    :<Login></Login>}
+                
+              </Route>
+
+              <Route exact path="/packagedelete/:id">
+              {(user)?
+                    <Deletepackage/>
                     :<Login></Login>}
                 
               </Route>
