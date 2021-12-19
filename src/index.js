@@ -32,6 +32,8 @@ import AShowpackages from './components/Admin/AShowpackages';
 import Packagedetails from './components/APackageMap/Packagedetails'; 
 import AUsers from './components/Admin/AUsers';
 import ACreate from './components/Admin/ACreate';
+import EventView from './components/Event/EventView';
+import EventdetailsView from './components/Event/Eventdetails';
 
 const user =localStorage.getItem('userData')
 console.log(user)
@@ -48,6 +50,8 @@ ReactDOM.render(
                 
               </Route>
               
+              {/* **********PACKAGES********** */}
+
               <Route exact path="/packages">
                 <Showpackages></Showpackages>
               </Route>
@@ -76,6 +80,16 @@ ReactDOM.render(
               <Route exact path="/packagedetails/:id">
                 <Packagesdetails></Packagesdetails>
               </Route>
+              {/* **********PACKAGES END********** */}
+
+              <Route exact path="/events">
+                <EventView/>
+              </Route>
+
+              <Route exact path="/eventdetails/:id">
+                <EventdetailsView/>
+              </Route>
+
 
               <Route exact path="/register">
                 <Registration></Registration>
@@ -136,13 +150,13 @@ ReactDOM.render(
               </Route>
               
               {/* Admin Events routes */}
-              <Route exact path="/events">
+              <Route exact path="/adminevents">
                   {(user)?
                       <AShowevents></AShowevents>
                       :<ALogin></ALogin>}
                 
               </Route>
-              <Route exact path="/eventdetails/:id">
+              <Route exact path="/admineventdetails/:id">
                   {(user)?
                       <Eventdetails></Eventdetails>
                       :<ALogin></ALogin>}
